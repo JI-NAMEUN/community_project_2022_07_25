@@ -3,7 +3,6 @@
 <%@ page import="com.ll.exam.article.dto.ArticleDto" %>
 
 
-// 형변환
 <%
     List<ArticleDto> articles = (List<ArticleDto>)request.getAttribute("articles");
 %>
