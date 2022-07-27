@@ -32,6 +32,9 @@ public class DispatchServlet extends HttpServlet {
                 break;
             case "POST":
                 switch (rq.getActionPath()) {
+                    case "/usr/article/detail":
+                        articleController.showDetail(rq);
+                        break;
                     case "/usr/article/write":
                         articleController.doWrite(rq);
                         break;
