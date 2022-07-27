@@ -28,10 +28,9 @@ placeholder 내용입력 전 나오는 글자
         form.submit();
     }
 </script>
-<function onsubmit="ArticleSave__submitForm(this); return false;"
-<h1>게시물 리스트</h1>
 
-<form>
+<h1>게시물 리스트</h1>
+<form method="POST" onsubmit="ArticleSave__submitForm(this); return false;">
     <div><span>제목</span>
         <div>
             <input type="title" maxlength="50" placeholder="제목을 입력해주세요" />
