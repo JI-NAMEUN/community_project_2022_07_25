@@ -10,6 +10,7 @@ import java.io.UnsupportedEncodingException;
 public class Rq {
     private final HttpServletRequest req;
     private final HttpServletResponse resp;
+
     public Rq(HttpServletRequest req, HttpServletResponse resp) {
         this.req = req;
         this.resp = resp;
@@ -31,6 +32,7 @@ public class Rq {
 
         return value;
     }
+
     public int getIntParam(String paramName, int defaultValue) {
         String value = req.getParameter(paramName);
         if (value == null) {
@@ -42,6 +44,7 @@ public class Rq {
             return defaultValue;
         }
     }
+
     public void appendBody(String str) {
         try {
             resp.getWriter().append(str);
@@ -65,9 +68,11 @@ public class Rq {
             throw new RuntimeException(e);
         }
     }
+
     public String getPath() {
         return req.getRequestURI();
     }
+
     public String getActionPath() {
         String[] bits = req.getRequestURI().split("/");
 
@@ -76,6 +81,31 @@ public class Rq {
 
 
     public String getMethod() {
+
         return req.getMethod();
+    }
+
+    public long getLongPathValueByIndex(int index, long defaultValue) {
+        String value = getPathValueByIndex(index, null);
+
+        if (value == null) {
+            return defaultValue;
+        }
+
+        try {
+            return Long.parseLong(value);
+        } catch (NumberFormatException e) {
+            return defaultValue;
+        }
+    }
+
+    public String getPathValueByIndex(int index, String defaultValue) {
+        String[] bits = req.getRequestURI().split("/");
+
+        try {
+            return bits[4 + index];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            return defaultValue;
+        }
     }
 }
