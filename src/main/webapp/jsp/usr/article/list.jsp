@@ -4,7 +4,7 @@
 <%
     List<ArticleDto> articles = (List<ArticleDto>)request.getAttribute("articles");
 %>
-<script src="https://cdn.tailwindcss.com"></script>
+<%@ include file="../common/head.jspf"%>
 <!-- 보통 구획은 섹션으로 나눈다. -->
 <section>
     <!-- container(max-width) : 너비가 너무 넓게 퍼지는 것을 막는다 + 반응형은 잃지 않는다. -->
@@ -25,3 +25,4 @@
         </ul>
     </div>
 </section>
+<%@ include file="../common/foot.jspf"%>
